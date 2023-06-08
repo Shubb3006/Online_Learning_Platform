@@ -1,0 +1,10 @@
+<?php
+include("navigation.php");
+require("config.php");
+$sno=$_SESSION['sno'];
+$sql="DELETE FROM `data` WHERE `data`.`sno` = '$sno'";
+$query=mysqli_query($con, $sql);
+session_unset();
+session_destroy();
+header("location:home.php");
+?>

@@ -1,0 +1,97 @@
+<?php
+include('navigation.html');
+require('config.php');
+
+$n_insert = false;
+$login = false;
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if($username=='admin' && $password=='admin')
+    {
+      
+      $_SESSION['loggedin'] = true;
+      $_SESSION['username'] = $username;
+    }
+  
+    $sql = "SELECT * FROM `data` WHERE username='$username'";
+    $result = mysqli_query($con, $sql);
+    $num = mysqli_num_rows($result);
+    if ($num == 1)
+    {  
+      while($row = mysqli_fetch_assoc($result))
+      {
+        if (password_verify($password, $row['password']))
+        {
+          $login = true;
+          session_start();
+          $_SESSION['loggedin'] = true;
+          $_SESSION['username'] = $username;
+          $_SESSION['sno']=$row['sno'];
+          header("location: index.html");
+        } 
+        else
+        {
+          $n_insert = true;
+          echo"Wrong password ! Please try again";
+        }
+      }
+    }  
+    else 
+    {
+      $n_insert = true;
+      echo "Please enter the correct username !";
+    }
+}
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Learning Platform</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<?php
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']==true){
+    if($_SESSION['username']=="admin")
+    {
+      header("location:admin.html");
+    }
+    else{
+      header("location:index.html");
+    }
+  
+}
+else
+{
+?>
+    <div class="form">
+    <form action="login.html" method="post">
+        <p id="login">Login</p>
+        <p id="label">Username</p>
+        <input type="text" name="username" id="username" placeholder="Enter your username"><br>
+        <p id="label">Password</p>
+        <input type="password" name="password" id="pass" placeholder="Enter your password"><br>
+        <!-- <a href="for.php" id="for">Forgot Password</a> -->
+        <?php
+
+        ?>
+        <div class="reg">
+            <a href="register.html">Sign up</a>
+            <button>Login</button>
+        </div>
+    </form>
+    </div>
+    <?php
+}
+?>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?php
+require('config.php');
+include('navigation.html');
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+    $img=$_POST['img'];
+    $name=$_POST['name'];
+    $language=$_POST['language'];
+    $price=$_POST['price'];
+    $sql="INSERT INTO `course` (`img`, `name`, `language`, `price`) VALUES ('$img', '$name', '$language', '$price')";
+    $query=mysqli_query($con,$sql);
+    $course="ALTER TABLE `data` ADD `$name` INT NOT NULL AFTER `dt`";
+    $runn = mysqli_query($con, $course);
+}
+if($_SESSION['username']=="admin")
+{
+?>
+<html>
+<form action="" method='post'>
+<input type="text" name="img" id="img" placeholder="Enter Your img" required>
+<input type="text" name="name" id="name" placeholder="Enter course name" required>
+<input type="text" name="language" id="language" placeholder="Enter Course languaage"required>
+<input type="text" name="price" id="price" placeholder="Enter The Course price" required>
+<button type="submit" id="submit">Add Course</button>
+
+</form>
+<html>
+<?php
+}
+else
+{
+    header("location:index.html");
+}
+?>

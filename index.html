@@ -1,0 +1,120 @@
+<?php
+require("config.php");
+// session_start();
+include('navigation.html');
+error_reporting(0);
+$insert=false;
+if(isset($_POST['name']))
+{
+    $server='localhost';
+    $username="root";
+    $password="";
+    $con=mysqli_connect($server,$username,$password);
+    if(!$con)
+    {
+        die("connection is failed due to this ". mysqli_connect_error());
+    }
+    $name=$_POST['name'];
+    $phone=$_POST['phone'];
+    $email=$_POST['email'];
+    $course=$_POST['course'];
+    $comments=$_POST['comments'];
+    $sql="INSERT INTO `callback` ( `name`, `phone`, `email`, `course`, `comments`, `date`) VALUES ('$name','$phone','$email','$course','$comments' ,CURRENT_TIMESTAMP());";
+    {
+        $insert=true;;
+    }
+    $con->close();
+    header("location:index.html");
+}
+
+if($_SESSION['username']=="admin")
+{
+    header("location:admin.html");
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online learning platform</title>
+    <link rel="stylesheet" href="css/home1.css">
+    <!-- <link rel="stylesheet" media="screen and (max-width:900px)" href="css/phone.css"> -->
+    <!-- <link rel="stylesheet" media="screen and (max-width:900px)" href="css/small.css"> -->
+    <link rel="stylesheet" media="screen and (max-width:900px)" href="css/phonea.css">
+</head>
+<body>
+    <div class="main">
+        <div class="main2">
+            <div class="container">
+                <h1>Welcome to online learning platform</h1>
+                <p>Learn and implement</p>
+                <button><a href="register.html">Get started</a></button>
+            </div>
+        </div>
+    </div>
+    <div class="add">
+        <ul>
+            <li>100 + online courses</li>
+            <li>Expert Instructors</li>
+            <li>Lifetime Access</li>
+        </ul>
+    </div>
+    <h1 style="display: block;
+    margin: 25px;
+    text-align: center;">Popular Courses</h1>
+    <div class="popular">
+        
+        <?php 
+        $sql = "select * from popcourse";
+    
+        $run = mysqli_query($con, $sql);
+        
+        while($row = mysqli_fetch_assoc($run)){ 
+            ?>
+            <div class="cards">
+                <div class="card">
+                    <div class="cardm">
+                        <div class="cardimg">
+                            <img src="<?php echo $row['img']; ?>" alt="">
+                        </div>
+                        <div class="cardtext">
+                            <h2><?php echo $row['name']; ?></h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, incidunt.</p>
+                        </div>
+                    </div>
+                    <div class="price">
+                        Price: Rs.<?php echo $row['price']; ?>
+                        <a href="course.php?id=<?php echo $row['id']; ?>" ><button>Enroll</button></a>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+
+    </div> 
+    <div class="button" style="display: flex;
+    justify-content: center;"
+    >
+    <a href="courses.html"><button id="btn">View all Courses</button></a>
+    </div>
+    <div class="callback">
+        <h1>Arrange a call back</h1>
+        <form action="" method="post">
+            
+            <input type="text" name="name" id="name" placeholder="Enter Your Name" required>
+            <input type="text" name="phone" id="phone" placeholder="Enter Your Mobile No." required>
+            <input type="email" name="email" id="email" placeholder="Enter Your Email Id"required>
+            <input type="text" name="course" id="course" placeholder="Enter The Course Interested in" required>
+            <input type="text" name="comments" id="comments" placeholder="Enter Your Comments">
+            <button type="submit" id="submit">Submit</button>
+        </form>
+        <!-- <?php
+            if(isset($_POST['name']))
+            {
+                echo"<p>Thanks for submitting your details</p>";
+            }
+            ?> -->
+    </div>
+</body>
+</html>

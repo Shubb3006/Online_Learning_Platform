@@ -1,0 +1,51 @@
+<?php
+include('navigation.html');
+require("config.php");
+$sno=$_SESSION['sno'];
+$sql = "SELECT * FROM `data` WHERE `data`.`sno`='$sno'";
+$query=mysqli_query($con, $sql);
+$res=mysqli_fetch_array($query);
+
+
+// $sql1 = "select * from `course` where `course`.`name`='$cname'";
+// $run = mysqli_query($con, $sql1);
+// $row = mysqli_fetch_assoc($run);
+$sql="select * from `course`";
+$run = mysqli_query($con, $sql);
+$row = mysqli_fetch_assoc($run);
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/python.css">
+</head>
+<body>
+    <h1 style="text-align:center; margin:24px;">My courses</h1>
+<div class="popular">
+    
+    <div class="cards">
+        <div class="card">
+            <div class="cardm">
+                <div class="cardimg">
+                    <img src="<?php echo $row['img']; ?>" alt="">
+                </div>
+                <div class="cardtext">
+                    <h2><?php echo $row['name']; ?></h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, incidunt.</p>
+                </div>
+            </div>       
+        </div>
+    </div>
+</div>  
+</body>
+</html>
+else
+{
+    header("location:login.php");
+}
+?>

@@ -1,0 +1,63 @@
+<?php
+include("config.php");
+include("navigation.html");
+$cid = $_GET['id'];
+$select="SELECT * FROM course where id='$cid'";
+$query=mysqli_query($con,$select);
+$num=mysqli_num_rows($query);
+$res=mysqli_fetch_array($query);
+$sno=$_SESSION['sno'];
+$select1="SELECT * FROM `data` where `sno`='$sno'";
+$query1=mysqli_query($con,$select1);
+$num1=mysqli_num_rows($query1);
+$res1=mysqli_fetch_array($query1);
+?>
+<?php
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']==true){
+    if($res['name']==$res1['courses'])
+    {
+        header("location:bought.php");
+    }
+    else
+    {
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Learning Platform</title>
+    <link rel="stylesheet" href="css/python.css">
+</head>
+<body>
+    <div class="data">
+        <div class="img">
+            <img src="<?php echo $res['img']; ?>" alt="">
+        </div>
+        <div class="info">
+            <h1><?php echo $res['name'];?></h1>
+            <div class="language">
+                <h2>Language :</h2>
+                <p><?php echo $res['language'];?></p>
+            </div>
+            <div class="language">
+                <h2>Instructors : </h2>
+                <p> Our best teachers</p>
+            </div>
+            <span id="price">&#8377;</span>
+            <span id="price"><?php echo $res['price'];?></span>
+            <div class="button">
+                <a href="buy.html?id=<?php echo $res['id'];?>"><button>Buy Now</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<?php 
+} 
+}
+else {
+    header("location:login.php");
+}
+?>  

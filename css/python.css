@@ -1,0 +1,51 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+.data{
+    display: flex;
+}
+.img{
+    margin: 210px 33px 29px 67px;
+    display: inline-block;
+}
+.img img{
+    width: 400px;
+    margin: 10px 44px;
+}
+.info{
+    display: block;
+    margin: 205px 0px 0px 67px;
+}
+.info h1{
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+.language {
+    display: flex;
+    margin-bottom: 30px;
+
+    
+}
+.language p{
+    font-size: 1.5em;
+}
+#price{
+    font-size: 64px;
+    color: #c2c200;
+    font-weight: bolder;
+}
+button
+{
+    margin: 32px 20px;
+    width: 120px;
+    padding: 12px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: orange;
+    color: white;
+    transition: 0.5s;
+}

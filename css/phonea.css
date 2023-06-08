@@ -1,0 +1,183 @@
+.navbar1 ul li a{
+    font-size: 15px;
+    padding: 0px 10px;
+}
+@media screen and (max-width:900px) {
+    .container button{
+        width: 20%;
+    }
+}
+@media screen and (max-width:750px) {
+    .navbar1 span{
+        font-size: 15px;
+        margin: 16px 14px;
+    }
+}
+@media screen and (max-width:650px) {
+    .callback #submit{
+        width: 20%;
+    }
+}
+@media screen and (max-width:600px) {
+    .container h1{
+        font-size: 20px;
+    }
+    .add ul li{
+        font-size: 12px;
+    }
+    .navbar1 span{
+        font-size: 15px;
+        margin: 16px 14px;
+        position: inherit;
+    }
+}
+@media screen and (max-width:500px) {
+    .callback #submit{
+        width: 25%;
+    }
+    .navbar1 ul li a {
+        font-size: 12px;
+        padding: 0px 7px;
+    }
+}
+@media screen and (max-width:430px) { 
+    .navbar1 ul li a{
+        font-size: 11px;
+        padding: 0px 5px;
+        
+    }
+    .navbar1 span{
+        font-size: 13px;
+        margin: 18px 14px;
+    }
+}
+@media screen and (max-width:400px) {
+    .container button{
+        width: 30%;
+    }
+    .callback #submit{
+        width: 28%;
+    }
+    .container h1{
+        font-size: 15px;
+    }
+    .add ul li{
+        font-size: 9px;
+    }
+    .reg button{
+        width: 25%;
+    }
+}
+@media screen and (max-width:365px){
+    .navbar1 ul li a{
+        font-size: 10px;
+        padding: 0px 2px;
+    }
+    .navbar1 span{
+        font-size: 11px;
+        margin: 20px 14px;
+    }
+}
+@media screen and (max-width:340px) { 
+    .navbar1 ul li a{
+        font-size: 12px;
+        padding: 0px 4px;
+        
+    }
+    .callback h1{
+        font-size: 30px;
+    }
+    .callback input[type=text]{
+        font-size: 12px;
+        padding: 2px;
+    }
+    .callback input[type=email]{
+        font-size: 12px;
+        padding: 2px;
+    }
+}
+@media screen and (max-width:315px){ 
+    .callback h1{
+        font-size: 25px;
+    }   
+}
+@media screen and (max-width:300px) { 
+    .main::before{
+        height: 542px;
+    }
+    .navbar1{
+        position: inherit;
+        justify-content: flex-start;
+    }
+    .navbar1 span{
+        font-size: 17px;
+        margin: 19px 6px;
+    }
+    .navbar1 ul{
+        flex-direction: column;
+    }
+    .navbar1 ul li{
+        margin: 5px;
+        text-align: center;
+    }
+    .container{
+        height: 400px;
+    }
+    .container button{
+        width: 26%;
+        font-size: 10px;
+    }
+    .pupular{
+        margin: 5px;
+    }
+    .callback #submit{
+        font-size: 12px;
+        width: 55%;
+    }
+    .callback input[type=text]{
+        font-size: 7px;
+        padding: 2px;
+    }
+    .callback input[type=email]{
+        font-size: 7px;
+        padding: 2px;
+    }
+    #log{
+        position: initial;
+    }
+    .cardimg img {
+        width: 184px;
+        height: 150.66px;
+    }
+    .cardtext {
+        width: 184px;
+    }
+    .cardtext h2, .cardtext p {
+        margin: 10px 7px;
+        width: 162px;
+        
+    }
+    .cardtext h2{
+        font-size: 23px;
+    }
+    .card .price button{
+        margin-left: 0px;
+        
+    
+    }
+    #btn{
+        padding: 8px 10px;
+    }
+    
+}
+@media screen and(max-width:270px){
+    .callback h1{
+        font-size: 20px;
+    }
+}
+@media screen and(max-width:235px){
+    .callback h1{
+        font-size: 16px;
+    }
+}
+

@@ -1,0 +1,48 @@
+<?php
+include("navigation.html");
+require("config.php");
+
+    $name=$_POST['name'];
+    $phone=$_POST['phone'];
+    $email=$_POST['email'];
+    $course=$_POST['course'];
+    $comments=$_POST['comments'];
+    $sql="INSERT INTO `callback` ( `name`, `phone`, `email`, `course`, `comments`, `date`) VALUES ('$name','$phone','$email','$course','$comments' ,CURRENT_TIMESTAMP());";
+    if($con->query($sql) == true)
+    {
+        $insert=true;;
+    }
+    $con->close();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Learning Platform</title>
+    <link rel="stylesheet" href="css/home1.css">
+    <link rel="stylesheet" media="screen and (max-width:900px)" href="css/phonea.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <div class="callback">
+        <h1>Arrange a Callback</h1>
+        <form action="" method="post">
+            <input type="text" name="name" id="name" placeholder="Enter Your Name" required>
+            <input type="text" name="phone" id="phone" placeholder="Enter Your Mobile No." required>
+            <input type="email" name="email" id="email" placeholder="Enter Your Email Id"required>
+            <input type="text" name="course" id="course" placeholder="Enter The Course Interested in" required>
+            <input type="text" name="comments" id="comments" placeholder="Enter Your Comments">
+            <button type="submit" id="submit">Submit</button>
+        </form>
+        <h2 style="margin: 10px 20px;">Or Contact us at</h2>
+        <div class="logo">
+            <a href="https://www.linkedin.com/feed/" target=blank><img src="img/linkedin.png" alt="" ></a>
+            <a href="https://www.instagram.com/" target=blank><img src="img/instagram.png" alt=""></a>
+            <a href="https://twitter.com/home" target=blank><img src="img/twitter.png" alt=""></a>
+            <a href="https://wa.me/" target=blank><img src="img/whatsapp.png" alt=""></a>
+        </div>
+    </div>
+</body>
+</html>
